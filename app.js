@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-mongoose.connect("mongodb+srv://admin-lay:test123@cluster0.a9jpt.mongodb.net/todolistDB?retryWrites=true&w=majority",{useNewUrlParser:true});
+mongoose.connect("mongodb+srv://lay_000:lay12345@todo.hhtwc.mongodb.net/todolistDB?retryWrites=true&w=majority", { useNewUrlParser: true });
 
 const itemsSchema = {
   name: String
@@ -107,9 +107,9 @@ app.post("/delete", function (req, res) {
     res.redirect("/");
   }
   else {
-    List.findOneAndUpdate({name:listName},{$pull:{items:{_id:checkedItem}}},function(err,foundList){
-      if(!err){
-        res.redirect("/"+ listName);
+    List.findOneAndUpdate({ name: listName }, { $pull: { items: { _id: checkedItem } } }, function (err, foundList) {
+      if (!err) {
+        res.redirect("/" + listName);
       }
     })
   }
@@ -130,5 +130,5 @@ if (port == null || port == "") {
 }
 
 app.listen(port, function () {
-  console.log("Server started on port 3000");
+  console.log("Server started on port 8000.");
 });
